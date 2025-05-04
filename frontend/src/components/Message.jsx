@@ -1,23 +1,17 @@
-
-
-
-
-const Message = ({variant,childern}) => {
-
-
+const Message = ({variant,children}) => {
+    
     const getVariantClass=()=>{
         switch(variant){
             case "success":
                 return "bg-green-100 text-green-800"
-            case "error":
+            case "danger":
                 return "bg-red-100 text-red-800"
             default:
                 return "bg-blue-100 text-blue-800"
         }
     }
 
-
-  return <div classname={`p-4 rounded ${getVariantClass()}`}>{childern}</div>
+  return <div className={`p-4 rounded ${getVariantClass()}`}>{children}</div>
 
 }
 

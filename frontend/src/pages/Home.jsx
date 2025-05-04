@@ -9,12 +9,12 @@ import Product from "./Products/Product"
 const Home = () => {
 
     const {keyword}=useParams();
-    const {data,isLoading,isError}=useGetProductQuery({keyword})
+    const {data,isLoading,isError,error}=useGetProductQuery({keyword})
 
   return (
     <div>
         {!keyword ? <Header />:null}
-        {isLoading ? <Loader /> : isError ? (<Message variant="danger" >{isError?.data?.message}</Message>) : (
+        {isLoading ? <Loader /> : isError ? (<Message variant="danger" >{error?.data?.message}</Message>) : (
             <>
                 <div className="flex justify-between items-center">
                     <h1 className="ml-[20rem] mt-[10rem] text-[3rem]">Special Products</h1>

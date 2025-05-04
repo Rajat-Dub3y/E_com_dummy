@@ -19,7 +19,7 @@ const orderSchema=mongoose.Schema({
             },
         },
     ],
-    ShippingAddress:{
+    shippingAddress:{
         address:{type:String,required:true},
         city:{type:String,required:true},
         postalCode:{type:String,required:true},
@@ -63,12 +63,12 @@ const orderSchema=mongoose.Schema({
     isDelivered:{
         type:Boolean,
         required:true,
-        defaullt:false
+        default:false
     },
     deliveredAt:{
         type:Date
     },
-},{timestamp:true})
+},{timestamps:true})
 
 const Order=mongoose.model("Order",orderSchema)
 export default Order;

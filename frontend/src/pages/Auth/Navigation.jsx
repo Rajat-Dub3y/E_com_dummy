@@ -82,7 +82,7 @@ const Navigation = () => {
 
             <div className="relative">
                 <button onClick={() => setDropdown(prev => !prev)} className="flex items-center text-gray-800 focus:outline-none">
-                    {userInfo ? (<span className='text-white'>{userInfo.username}</span>) : <>hgjj</>}
+                {userInfo ? (<span className='text-white'>{userInfo.username}</span>) : <span className="text-white">Login</span>}
                     {userInfo && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ const Navigation = () => {
         </button>
 
         {dropdown && userInfo && (
-            <ul className={`absolute right-0 mt-2 mr14 space-y-2 bg-white text-gray-600 ${!userInfo.isAdmin ? "-top-20":"-top-80"}`}>
+            <ul className={`absolute right-0 mt-2 mr-14 space-y-2 bg-white text-gray-600 ${!userInfo.isAdmin ? "-top-20":"-top-80"}`}>
                 {userInfo.isAdmin && (
                     <>
                         <li>
@@ -139,12 +139,6 @@ const Navigation = () => {
                         <Link to="/login" className="flex items-center transition-transform transform hover:translate-x-2">
                             <AiOutlineLogin className="mr-3 mt-[3rem]" size={26} />
                             <span className="hidden nav-item-name mt-[3rem]">Login</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/adduser" className="flex items-center transition-transform transform hover:translate-x-2">
-                            <AiOutlineUserAdd className="mr-3 mt-[3rem]" size={26} />
-                            <span className="hidden nav-item-name mt-[3rem]">Add User</span>
                         </Link>
                     </li>
                 </ul>
