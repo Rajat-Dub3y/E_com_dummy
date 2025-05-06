@@ -34,6 +34,7 @@ const PlaceOrder = () => {
         }
       
         try {
+          console.log(cart.totalPrice)
           const res = await createOrder({
             orderItems: cart.cartItems,
             shippingAddress: cart.shippingAddress,
