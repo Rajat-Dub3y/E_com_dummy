@@ -22,6 +22,11 @@ const Order = () => {
 
     const {data:paypal,isLoading:loadingPayPal,error:errorPayPal}=useGetPaypalClientIdQuery();
 
+    const deliverHandler=async()=>{
+        await deliverOrder(orderId);
+        refetch();
+    }
+
     useEffect(()=>{
         if(!errorPayPal && !loadingPayPal && paypal.clientId){
             const loadingPayPalScript=async()=>{
@@ -125,7 +130,7 @@ const Order = () => {
                     {order.paymentMethod}
                 </p>
                 {order.isPaid  ?(
-                    <Message variant="success">Paid on</Message>
+                    <Message variant="success">Paid on {order.paidAt}</Message>
                 ):(
                     <Message variant="danger" > Not Paid </Message>
                 )}
@@ -159,6 +164,14 @@ const Order = () => {
                     ) }
                 </div>
             ) }
+            {loadingDeliver && <Loader />}
+            {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                <div>
+                    <button type="button" className="bg-pink-500 text-black w-full py-2" onClick={deliverHandler}>
+                        Mark as delivered
+                    </button>
+                </div>
+            )}
         </div>
     </div>
   )

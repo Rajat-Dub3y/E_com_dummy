@@ -9,7 +9,7 @@ router.route("/").post(authenticate,createOrder).get(authenticate,adminCheck,get
 router.route("/mine").get(authenticate,getUserOrders)
 router.route("/total_orders").get(countTotalOrder)
 router.route("/total_sales").get(calcTotalSales)
-router.route("total_sales_by_date").get(calculateTotalSalesByDate)
+router.route("/total_sales_by_date").get(calculateTotalSalesByDate)
 router.route("/:id").get(authenticate,findOrderById)
 router.route("/:id/pay").put(authenticate,markOrderAsPaid)
 router.route("/:id/deliver").put(authenticate,adminCheck,markOrderAsDelivered)

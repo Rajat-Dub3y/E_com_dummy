@@ -4,7 +4,6 @@ import HeartIcon from "./HeartIcon"
 
 
 const Product = ({product}) => {
-    console.log(product)
   return (
     <div>
         <div className="w-[30rem] ml-[2rem] p-3 relative">

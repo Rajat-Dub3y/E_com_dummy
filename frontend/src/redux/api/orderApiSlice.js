@@ -18,7 +18,7 @@ export const orderApiSlice = apislice.injectEndpoints({
     payOrder: builder.mutation({
       query: ({ orderId, details }) => ({
         url: `${ORDER_URL}/${orderId}/pay`,
-        method: "POST",
+        method: "PUT",
         body: details,
       }),
     }),

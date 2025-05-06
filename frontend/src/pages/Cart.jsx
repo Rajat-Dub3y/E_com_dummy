@@ -15,12 +15,12 @@ const Cart = () => {
   };
 
   const removeFromCartHandler = (productId) => {
-    dispatch(removeFromCart({ productId }));
+    dispatch(removeFromCart(productId));
   };
 
-  const checkoutHandler=()=>{
-    navigate("/login?redirect=/shipping")
-  }
+  const checkoutHandler = () => {
+    navigate("/login?redirect=/shipping");
+  };
 
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-8">
@@ -85,19 +85,27 @@ const Cart = () => {
                 </button>
               </div>
             ))}
-            <div className="mt-8 w-[40rem]">
-                <div className="p-4 rounded-lg">
-                    <h2 className="text-xl font-semibold mb-2">
-                        Items(
-                            {cartItems.reduce((acc,item)=>acc+item.qty,0)}{" "}
-                        )
-                    </h2>
-                    <div className="text-2xl font-bold">
-                        ${" "}
-                        {cartItems.reduce((acc,item)=>acc+item.qty*item.price,0).toFixed(2)}
-                    </div>
-                    <button disabled={cartItems.length===0} onClick={checkoutHandler} className="bg-pink-500 mt-4 py-2 px-4 rounded-full text-lg w-full">Proceed To Checkout</button>
+            <div className="mt-8 w-full max-w-xs sm:max-w-md mx-auto">
+              <div className="p-4 rounded-lg bg-white shadow-sm border border-gray-200">
+                <h2 className="text-xl font-semibold mb-2">
+                  Items (
+                  {cartItems.reduce((acc, item) => acc + item.qty, 0)}{" "}
+                  )
+                </h2>
+                <div className="text-2xl font-bold">
+                  ${" "}
+                  {cartItems
+                    .reduce((acc, item) => acc + item.qty * item.price, 0)
+                    .toFixed(2)}
                 </div>
+                <button
+                  disabled={cartItems.length === 0}
+                  onClick={checkoutHandler}
+                  className="bg-pink-500 mt-4 py-2 px-4 rounded-full text-lg w-full disabled:opacity-50"
+                >
+                  Proceed To Checkout
+                </button>
+              </div>
             </div>
           </div>
         )}
